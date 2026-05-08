@@ -1,20 +1,30 @@
 # Spinup
 
-Spinup is building the runtime layer for agents that need more than a model call.
+> Spinup gives cloud agents an identity, a runtime, and an operating history.
 
-Files. Packages. Browsers. Secrets. State. Once an agent needs those, the runtime stops being an implementation detail.
+Most agents are a prompt and a webhook. Once an agent needs files, packages, browsers, secrets, and state across runs, the runtime stops being an implementation detail. So does the question of who the agent is, what it's allowed to do, and what it did last week.
 
-This org is for the code and docs behind that.
+Spinup is the layer that makes both answerable.
+
+This org holds the code and docs behind that.
 
 We're early. The public surface is small on purpose.
 
-## What Spinup is
+## What you get per agent
 
-- A cloud agent runtime
-- One isolated environment per agent
-- A stable API above the runtime
-- Swappable harnesses inside the same agent model
-- Agent-level skills, secrets, network policy, and snapshots
+- A durable identity owned by your workspace
+- An isolated environment with its own filesystem, packages, tools, and state
+- Skills, secrets, and a network policy attached to that identity
+- Snapshots for pause, restore, replace
+- A swappable harness inside the environment (OpenClaw, Hermes, more coming)
+- Run history that survives harness and machine changes
+- Suspend, revoke, or delete at the agent level
+
+## Why the identity layer
+
+Agent identity is the durable object. Models change. Harnesses change. The machine underneath gets recycled. What survives is the agent: who owns it, what it can do, what it did, how to revoke it.
+
+That's the layer Spinup is building.
 
 ## Start here
 
@@ -28,14 +38,14 @@ We're early. The public surface is small on purpose.
 
 - Web app and API
 - CLI and SDK
-- Auth, contracts, and database code
-- Execution plane, worker host, supervisor, and provisioning path
+- Auth, contracts, database
+- Execution plane: worker host, supervisor, Firecracker provisioning
 
 ## Who this is for
 
-Developers building agent products that need isolation, persistence, tools, and sane runtime controls.
+Developers and teams building agents that behave like small computers and that someone has to be accountable for.
 
-If your agent is basically a prompt plus a webhook, this will probably feel like overkill.
-If it behaves like a small computer, you are in the right place.
+If your agent is a prompt plus a webhook, this will feel like overkill.
+If it runs for minutes, touches files, holds credentials, or has to be revocable, you're in the right place.
 
 [Docs](https://www.getspinup.com/docs)
