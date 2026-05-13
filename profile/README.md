@@ -1,30 +1,32 @@
 # Spinup
 
-> Spinup gives cloud agents an identity, a runtime, and an operating history.
+> A cloud agent runtime. One agent. One computer. Any harness.
 
-Most agents are a prompt and a webhook. Once an agent needs files, packages, browsers, secrets, and state across runs, the runtime stops being an implementation detail. So does the question of who the agent is, what it's allowed to do, and what it did last week.
+Each agent gets its own cloud computer: files, packages, browsers, secrets, and state that persist between runs. The harness on top is swappable. The agent underneath is workspace-owned, with a stable ID and a kill switch.
 
-Spinup is the layer that makes both answerable.
+Spinup is the runtime that future agent names will point at. The first step toward agent identity.
 
 This org holds the code and docs behind that.
 
-We're early. The public surface is small on purpose.
+The public surface is small on purpose.
 
 ## What you get per agent
 
-- A durable identity owned by your workspace
-- An isolated environment with its own filesystem, packages, tools, and state
-- Skills, secrets, and a network policy attached to that identity
+- An isolated cloud computer with its own filesystem, packages, tools, and state
+- A workspace-owned agent with a stable ID, owner, and lifecycle
+- Skills, secrets, and a network policy attached to the agent
 - Snapshots for pause, restore, replace
 - A swappable harness inside the environment (OpenClaw, Hermes, more coming)
 - Run history that survives harness and machine changes
 - Suspend, revoke, or delete at the agent level
 
-## Why the identity layer
+## Why a runtime
 
-Agent identity is the durable object. Models change. Harnesses change. The machine underneath gets recycled. What survives is the agent: who owns it, what it can do, what it did, how to revoke it.
+Build the agent once. Run it on a real cloud computer. Swap the harness when the ecosystem changes.
 
-That's the layer Spinup is building.
+Models change. Harnesses change. The machine underneath gets recycled. What survives is the agent: who owns it, what it can do, what it did, how to revoke it.
+
+Identity, history, and tool portability come with the runtime.
 
 ## Start here
 
